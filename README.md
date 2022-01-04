@@ -5,13 +5,15 @@ Race To 50 is a simple game where the players roll a die until they get at least
 
 ## class
 To store data of each player
-- player_name: variable that stores player's name
+- name: variable that stores player's name
 - total_dots: variable that stores total dots rolled
 - total_rolls: variable that stores total rolls
-- get_dots: funct for game to see how many dots player has
-- get_rolls: funct for game to see how many rolls play has taken
-- set_total_dots: funct for player to roll the die and count more dots
-- set_total_rolls: funct for player to increment roll count
+- get name: get player's name
+- get dots: funct for game to see how many dots player has
+- get rolls: funct for game to see how many rolls play has taken
+- set name: set player's name
+- set dots: adds roll value to total dots
+- increment_rolls: funct for player to increment roll count
 
 
 ## functions
