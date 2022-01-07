@@ -27,9 +27,18 @@ const player = (name) => {
         set name(name) {
             this._name = name;
         },
+/*
         //adds roll value to total dots
         set dots(num) {
             this._total_dots += num;
+        },
+*/
+        set rolls(num) {
+          this._total_rolls = num;
+        },
+        //funct for player to roll die
+        roll_die() {
+            this._total_dots += generate_random_number();
         },
         //funct for player to increment roll count
         increment_rolls() {
@@ -38,44 +47,56 @@ const player = (name) => {
     }
 }
 
-/*
-//testing player variables and functions
-//initialize players
-const player1 = player("Avery");
-const player2 = player("Ben");
+/***************************************************************
+****************************************************************
+**********            FUNCTIONS            *********************
+****************************************************************
+***************************************************************/
 
-//get name
-console.log(`player 1's name: ${player1.name}`);
-console.log(`player 2's name: ${player2.name}`);
+//function generate_random_number: randomly generates value between 1-6 to reflect player rolling a die
+const generate_random_number = () => {
+    const roll_value = Math.floor(Math.random() * 6) + 1;
+    console.log(`roll die value: ${roll_value}`);
 
-//get dots
-console.log(`player1's current dots count: ${player1.dots}`);
-console.log(`player2's current dots count: ${player2.dots}`);
-
-//get rolls
-console.log(`player1's current rolls count: ${player1.rolls}`);
-console.log(`player2's current rolls count: ${player2.rolls}`);
-
-//set player's name
-player1.name = 'Andrew';
-player2.name = 'Bob';
-console.log(`player 1's name: ${player1.name}`);
-console.log(`player 2's name: ${player2.name}`);
-
-//roll die
-player1.dots = 1;
-player2.dots = 5;
-console.log(`player1's current dots count: ${player1.dots}`);
-console.log(`player2's current dots count: ${player2.dots}`);
-player1.dots = 2;
-player2.dots = 3;
-console.log(`player1's current dots count: ${player1.dots}`);
-console.log(`player2's current dots count: ${player2.dots}`);
+    return roll_value;
+};
 
 
-//increment rolls
-player1.increment_rolls();
-player2.increment_rolls();
-console.log(`player1's current rolls count: ${player1.rolls}`);
-console.log(`player2's current rolls count: ${player2.rolls}`);
-*/
+//function find_winner: identifies player with least amount of rolls and returns player's name
+const find_winner = players_arr => {
+
+  let min_player_index = 0;
+
+  for (let player=1; player < players_arr.length; player++) {
+    if (players_arr[player].rolls < players_arr[min_player_index].rolls) {
+      min_player_index = player;
+    }
+  };
+  
+  console.log(`The winner is ${players_arr[min_player_index].name}!`);
+  
+};
+
+
+
+//initialize winners
+//create players
+let players = [];
+for (let i=0; i<5; i++) {
+  let temp_name = 'Player' + (i+1);
+  let new_player = player(temp_name);
+  players.push(new_player);
+}
+players[0].rolls = 5;
+players[1].rolls = 7;
+players[2].rolls = 1;
+players[3].rolls = 89;
+players[4].rolls = 10;
+
+//print each player's rolls
+for (let player in players) {
+    console.log(`player ${players[player].name} roll value: ${players[player].rolls}`);
+}
+
+//find winner
+find_winner(players);
