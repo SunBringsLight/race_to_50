@@ -12,21 +12,18 @@ To store data of each player
 - get dots: funct for game to see how many dots player has
 - get rolls: funct for game to see how many rolls play has taken
 - set name: set player's name
-- set dots: adds roll value to total dots
+- set rolls: sets roll count value to total rolls
+- roll die: acts as player rolling a die and adds the value to total dots rolled
 - increment_rolls: funct for player to increment roll count
 
 
 ## functions
-- roll_die: randomly generates value between 1-6
-- find_winner: calls helper function to get which player's roll count was lower and returns player's name
-- output_winner_name: outputs name of winner
-
-## helper functions
-- get_diff: takes in array of values and returns which value was lowest
+- generate random number: randomly generates value between 1-6
+- find_winner: identifies player with least amount of rolls
 
 
 # Steps
-1. in an array, create 5 players, naming each of them as their player number created (i+1)
+1. in an array, create players, naming each of them as their player number created (i+1)
 for each player, do steps 2-4:
 2. roll die
 3. increment total rolls
